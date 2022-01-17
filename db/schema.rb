@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_170812) do
+ActiveRecord::Schema.define(version: 2022_01_17_134222) do
 
   create_table "notes", charset: "utf8mb4", force: :cascade do |t|
     t.string "message"
@@ -18,6 +18,32 @@ ActiveRecord::Schema.define(version: 2022_01_15_170812) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "players", charset: "utf8mb4", force: :cascade do |t|
+    t.string "fideid", limit: 12
+    t.string "name"
+    t.string "country", limit: 3
+    t.string "sex", limit: 1
+    t.string "title", limit: 4
+    t.string "w_title", limit: 4
+    t.string "o_title", limit: 4
+    t.string "foa_title", limit: 4
+    t.string "rating", limit: 4
+    t.string "games"
+    t.string "k", limit: 2
+    t.string "rapid_rating", limit: 4
+    t.string "rapid_games"
+    t.string "rapid_k", limit: 2
+    t.string "blitz_rating", limit: 4
+    t.string "blitz_games"
+    t.string "blitz_k", limit: 2
+    t.string "birthday"
+    t.string "flag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fideid", "name"], name: "players_fideid_name_fulltext", type: :fulltext
+    t.index ["fideid"], name: "index_players_on_fideid", unique: true
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
