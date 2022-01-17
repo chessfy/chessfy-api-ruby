@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :authorized, :set_note, only: %i[ show update destroy ]
+  before_action :authorized
 
   # GET /notes
   def index
@@ -16,8 +16,8 @@ class NotesController < ApplicationController
   # POST /notes
   def create
     @note = Note.new(note_params)
+    
     @note.user_id = @user.id
-
     if @note.save
       render json: @note, status: :created, location: @note
     else
