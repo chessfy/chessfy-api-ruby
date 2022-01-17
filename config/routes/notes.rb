@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-  draw(:auth)
-  draw(:notes)
+  resources :notes
 end
