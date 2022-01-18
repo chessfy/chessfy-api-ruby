@@ -14,7 +14,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.date :birthday, null:true
       t.string :remember_token, null:true, limit:100
 
-      t.timestamps
+      t.timestamps null:true, default: DateTime.now
+      
     end
     add_index :users, [:username, :name], name: 'users_username_name_fulltext', type: :fulltext
   end

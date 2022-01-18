@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_170812) do
     t.string "blitz_k", limit: 2
     t.string "birthday"
     t.string "flag"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: "2022-01-18 16:06:36"
+    t.datetime "updated_at", precision: 6, default: "2022-01-18 16:06:36"
     t.index ["fideid", "name"], name: "players_fideid_name_fulltext", type: :fulltext
     t.index ["fideid"], name: "index_players_on_fideid", unique: true
   end
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_170812) do
     t.string "biography", limit: 750
     t.date "birthday"
     t.string "remember_token", limit: 100
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: "2022-01-18 16:06:36"
+    t.datetime "updated_at", precision: 6, default: "2022-01-18 16:06:36"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["player_id"], name: "index_users_on_player_id"
     t.index ["username", "name"], name: "users_username_name_fulltext", type: :fulltext
