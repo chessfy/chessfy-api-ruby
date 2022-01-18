@@ -23,10 +23,7 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
       t.string :flag, null: true
 
       t.timestamps
-
-
     end
     add_index :players, [:fideid, :name], name: 'players_fideid_name_fulltext', type: :fulltext
-
   end
 end

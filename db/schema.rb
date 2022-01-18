@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_134222) do
+ActiveRecord::Schema.define(version: 2022_01_15_170812) do
 
   create_table "notes", charset: "utf8mb4", force: :cascade do |t|
     t.string "message"
@@ -47,12 +47,26 @@ ActiveRecord::Schema.define(version: 2022_01_17_134222) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.integer "age"
+    t.string "username", limit: 30, null: false
+    t.bigint "player_id"
+    t.string "role", default: "user", null: false
+    t.string "email", null: false
+    t.string "name", limit: 100
+    t.string "password_digest", null: false
+    t.timestamp "email_verified_at"
+    t.boolean "affiliated", default: false, null: false
+    t.string "photo", limit: 120
+    t.string "biography", limit: 750
+    t.date "birthday"
+    t.string "remember_token", limit: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["player_id"], name: "index_users_on_player_id"
+    t.index ["username", "name"], name: "users_username_name_fulltext", type: :fulltext
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "notes", "users"
+  add_foreign_key "users", "players"
 end
