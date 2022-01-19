@@ -10,6 +10,8 @@ class NotesController < ApplicationController
 
   # GET /notes/1
   def show
+    @note = Note.find(@user.id)
+
     render json: @note
   end
 
